@@ -1,0 +1,23 @@
+{
+  "name": "Schedule",
+  "version": "1.0.0",
+  "description": "Gestion simplifiée de tâches périodiques non bloquantes, basée sur micros() (Micro_Scheduler) ou millis() (Milli_Scheduler)",
+  "keywords": ["scheduler", "task", "non-blocking", "millis", "micros", "arduino"],
+  "repository": {"type": "git", "url": "https://github.com/Fo170/Schedule.git"},
+  "authors": [{"name": "Olivier FOURNET", "email": "olivier.fournet@free.fr", "url": "https://github.com/Fo170", "maintainer": true}],
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/Fo170/Schedule",
+  "frameworks": "arduino",
+  "platforms": ["*"],
+  "headers": "Schedule.h",
+  "examples": ["examples/BasicUsage/BasicUsage.ino"],
+  "export": {
+    "exclude": [
+      "*.md",
+      "*.yml",
+      "*.txt",
+      "*.ini",
+      "AGENTS.md"
+    ]
+  }
+}

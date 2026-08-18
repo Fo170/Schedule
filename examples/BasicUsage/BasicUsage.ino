@@ -10,7 +10,7 @@
 //   '2'  -> Change_Delay() période 10 s (millis) / 5 s (micros)
 
 #include <Arduino.h>
-#include <Schedule.h>
+#include <Scheduler_Millis_Micros.h>
 
 #ifndef LED_BUILTIN
   #define LED_BUILTIN 2   // LED interne des cartes ESP32 / ESP8266 qui ne définissent pas LED_BUILTIN

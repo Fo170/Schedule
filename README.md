@@ -1,6 +1,6 @@
 # Schedule — gestion simplifiée de tâches (micros() / millis())
 
-Bibliothèque **header-only** (un seul fichier `Schedule.h`, pas de `.cpp`) pour exécuter des tâches périodiques **non bloquantes** (busy-check, pas de `delay()`). Deux classes à API identique :
+Bibliothèque **header-only** (un seul fichier `Scheduler_Millis_Micros.h`, pas de `.cpp`) pour exécuter des tâches périodiques **non bloquantes** (busy-check, pas de `delay()`). Deux classes à API identique :
 
 | Classe | Horloge | Unité des périodes | Wrap-around |
 |---|---|---|---|
@@ -13,14 +13,16 @@ Bibliothèque **header-only** (un seul fichier `Schedule.h`, pas de `.cpp`) pour
 
 ```ini
 lib_deps =
-    https://github.com/Fo170/Schedule.git@^1.0.0
+    https://github.com/Fo170/Schedule.git@^1.0.1
 ```
 
 ### Arduino IDE
 
-Copier `Schedule.h` dans le dossier du sketch puis `#include "Schedule.h"`.
+Copier `Scheduler_Millis_Micros.h` dans le dossier du sketch puis `#include "Scheduler_Millis_Micros.h"`.
 
-> ⚠️ `Schedule.h` n'inclut **pas** `Arduino.h` : le core Arduino (`micros()` / `millis()`) doit être inclus **avant**. En pratique, Arduino IDE et PlatformIO l'incluent automatiquement — par sûreté, écrire `#include <Arduino.h>` en premier dans votre sketch.
+> ⚠️ `Scheduler_Millis_Micros.h` n'inclut **pas** `Arduino.h` : le core Arduino (`micros()` / `millis()`) doit être inclus **avant**. En pratique, Arduino IDE et PlatformIO l'incluent automatiquement — par sûreté, écrire `#include <Arduino.h>` en premier dans votre sketch.
+
+> 💡 Le fichier ne s'appelle **pas** `Schedule.h` : ce nom entre en collision avec `cores/esp8266/Schedule.h` du core ESP8266 (inclus par `ESP8266WiFiGratuitous.cpp`), que PlatformIO masquerait au profit du fichier de cette librairie.
 
 ## API
 
@@ -43,7 +45,7 @@ Macros de périodes prédéfinies (unités selon la classe : µs pour `Micro_Sch
 
 ```cpp
 #include <Arduino.h>
-#include <Schedule.h>
+#include <Scheduler_Millis_Micros.h>
 
 Milli_Scheduler tache;                 // tâche lente, basée sur millis()
 
@@ -66,7 +68,7 @@ Exemple complet : `examples/BasicUsage/BasicUsage.ino` (démo des deux classes +
 
 - **`TestDelay()` ne re-arme pas** : une fois `delay` dépassé, il renvoie `true` à **chaque** appel tant qu'on n'appelle pas `Reset()`. Toujours appeler `Reset()` juste après avoir traité la tâche.
 - **Dépassement d'horloge** : `TestDelay()` fait `micros() - t0` / `millis() - t0`. La soustraction modulo `2^32` est **overflow-safe** (49,7 j pour millis, ~71 min pour micros). Ne pas remplacer par `now() >= t0 + delay` qui **déborde** et rendrait le délai quasi nul.
-- **Header-only non `inline`** : ne pas inclure `Schedule.h` depuis plusieurs fichiers sources (`TU`) d'un même programme.
+- **Header-only non `inline`** : ne pas inclure `Scheduler_Millis_Micros.h` depuis plusieurs fichiers sources (`TU`) d'un même programme.
 - **API en anglais** (`Run`/`Stop`/`TestDelay`/…) : ne pas renommer les méthodes, utilisées telles quelles par les sketches.
 
 ## Licence

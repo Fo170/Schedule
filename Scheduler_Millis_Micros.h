@@ -1,5 +1,5 @@
 // Version de la librairie (source UNIQUE — agrégée par liste_lib.h)
-#define __SCHEDULER_H_VERSION__ "1.0.1"
+#define __SCHEDULER_H_VERSION__ "1.0.2"
 
 // Schedule - gestion simplifier de tache (basé sur micros() ou millis() )
 

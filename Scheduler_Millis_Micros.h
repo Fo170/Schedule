@@ -1,5 +1,8 @@
+#ifndef SCHEDULER_MILLIS_MICROS_H
+#define SCHEDULER_MILLIS_MICROS_H
+
 // Version de la librairie (source UNIQUE — agrégée par liste_lib.h)
-#define __SCHEDULER_H_VERSION__ "1.0.2"
+#define __SCHEDULER_H_VERSION__ "1.0.3"
 
 // Schedule - gestion simplifier de tache (basé sur micros() ou millis() )
 
@@ -89,3 +92,5 @@ class Milli_Scheduler
 
     bool Get_Etat(){ return etat; }
 };
+
+#endif // SCHEDULER_MILLIS_MICROS_H

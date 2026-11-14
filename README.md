@@ -1,6 +1,6 @@
 # Schedule — gestion simplifiée de tâches (micros() / millis())
 
-> Version **1.0.1** — [Dernières versions](https://github.com/Fo170/Schedule/releases)
+> Version **1.0.3** — [Dernières versions](https://github.com/Fo170/Schedule/releases)
 
 Bibliothèque **header-only** (un seul fichier `Scheduler_Millis_Micros.h`, pas de `.cpp`) pour exécuter des tâches périodiques **non bloquantes** (busy-check, pas de `delay()`). Deux classes à API identique :
 
